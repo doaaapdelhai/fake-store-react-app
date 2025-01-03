@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = ({ onSearch, onCategoryChange }) => {
@@ -11,8 +12,9 @@ const Navbar = ({ onSearch, onCategoryChange }) => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">MyStore</div>
-
+   <Link to="/" className="navbar-logo">
+        MyStore
+      </Link>
       <div className="navbar-search">
         <input
           type="text"

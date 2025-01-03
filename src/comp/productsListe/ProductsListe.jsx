@@ -1,17 +1,16 @@
-import './ProductsListe.css';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // استيراد Link من react-router-dom
 import Data from '../Date'; 
-
+import './ProductsListe.css'
 const ProductsListe = ({ searchTerm, selectedCategory }) => {
   const [filteredProducts, setFilteredProducts] = useState(Data);
-// filterProducts
+
   const filterProducts = (term, category) => {
-    let filtered = Data.filter((product) => 
-      product.title.toLowerCase().includes(term.toLowerCase()) || 
+    let filtered = Data.filter((product) =>
+      product.title.toLowerCase().includes(term.toLowerCase()) ||
       product.description.toLowerCase().includes(term.toLowerCase())
     );
 
-// filter chose
     if (category) {
       filtered = filtered.filter(product => product.category === category);
     }
@@ -19,7 +18,6 @@ const ProductsListe = ({ searchTerm, selectedCategory }) => {
     setFilteredProducts(filtered);
   };
 
-// when text change
   useEffect(() => {
     filterProducts(searchTerm, selectedCategory);
   }, [searchTerm, selectedCategory]);
@@ -31,10 +29,12 @@ const ProductsListe = ({ searchTerm, selectedCategory }) => {
           <div className="card" key={product.id}>
             <img className="card-image" src={product.image} alt={product.title} />
             <h3 className="card-title">{product.title.slice(0, 15)}</h3>
-            <p className="card-description">{product.description.split(' ').slice(0, 6).join(' ')}...</p>   
+            <p className="card-description">{product.description.split(' ').slice(0, 6).join(' ')}...</p>
             <span className="card-price">Price: ${product.price}</span>
             <div className="btns">
-              <button className="view-btn">View Details</button>
+              <Link to={`/product/${product.id}`}>
+                <button className="view-btn">View Details</button>
+              </Link>
             </div>
           </div>
         ))
