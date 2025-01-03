@@ -1,0 +1,20 @@
+/* *{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+:root{
+  --main-Color: #088178;
+}
+.container{
+  width: 90%;
+  margin: 100px auto;
+} */
+
+.title_{
+  text-align: center;
+  color:orangered;
+}
