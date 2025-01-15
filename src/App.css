@@ -14,7 +14,22 @@ body{
   margin: 100px auto;
 } */
 
-.title_{
+/* .title_{
   text-align: center;
   color:orangered;
+} */
+body{
+  overflow-x: hidden;
+}
+.sidebar{
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+.sidebar li{
+  padding: 10px 5px;
+  text-align: center;
+
+}
+.sidebar li a{
+  text-decoration: none;
 }

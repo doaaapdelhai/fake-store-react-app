@@ -1,38 +1,34 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import React from 'react';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import ProductDetails from "./comp/ProductDetails/ProductDetails";
-import ProductsListe from "./comp/productsListe/ProductsListe";
-import Navbar from "./comp/navbar/Navbar";
-import { useState } from "react";
+import HomePage from "./Pages/HomePage";
+import NavBar from "./NavBar";
+import Siadbar from "./Siadbar";
+import Products from "./Pages/Products";
+import AddProduct from "./Pages/AddProduct";
+import ProductDetailes from "./Pages/ProductDetailes";
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-
   return (
-    <Router>
-      <div className="App">
-        <Navbar
-          onSearch={setSearchTerm}
-          onCategoryChange={setSelectedCategory}
-        />
-        <h1 className="title_">Enjoy shopping!</h1>
+    <BrowserRouter> 
+    <div className="app">
+      <NavBar />
+      <div className="row">
+        <div className="col-2 sidebar ">
+          <Siadbar />
+        </div>
+        <div className="col-10">
+        <Routes >
+        <Route  path="/" element={<HomePage/>} />
+        <Route path="products" element={<Products/>} />
+        <Route path="products/add" element={<AddProduct/>} />
+        <Route path="products/:productID" element={<ProductDetailes/>} />
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProductsListe
-                searchTerm={searchTerm}
-                selectedCategory={selectedCategory}
-              />
-            }
-          />
-          <Route path="/product/:id" element={<ProductDetails />} />{" "}
-          {/* صفحة تفاصيل المنتج */}
         </Routes>
+        </div>
       </div>
-    </Router>
+    </div>
+    </BrowserRouter>
   );
 };
 
